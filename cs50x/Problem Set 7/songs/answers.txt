@@ -1,0 +1,3 @@
+I would actually calculate aura by looking at which songs they just press play next song and which songs they listened to more than a few times.
+Based on that I would rank their best and worst genres and give recommendations for the same.
+Wouldn't really call this peoples audio aura, just having a common sense. :)

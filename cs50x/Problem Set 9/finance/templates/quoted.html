@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+        <div class="mb-3">
+            {% for key in values %}
+                {{key}} = {{values[key]}}<br>
+            {% endfor %}
+        </div>
+{% endblock %}

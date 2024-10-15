@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="mb-3">
+        <table class="table">
+            <tr>
+                <th>Stock</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total value</th>
+            </tr>
+
+            {% set ns = namespace(totals=0) %}
+            {% for row in query %}
+            <tr>
+                <td>{{row['stock']}}</td>
+                <td>{{row['shares']}}</td>
+                {% set price = lookup(row['stock'])['price'] %}
+                <td>{{price}}</td>
+                <td>{{price * row['shares']}}</td>
+            </tr>
+            {% set ns.totals = ns.totals + price * row['shares'] %}
+            {% endfor %}
+
+        </table>
+
+        <div class="mb-3">
+            {% set cash = query_cash[0]['cash'] %}
+            Cash: {{cash}} <br>
+            Grand total: {{cash + ns.totals}} <br>
+        </div>
+
+        <div class="mb-3">
+
+            <form method="post" action="/">
+                <label for='addcash'>Add cash:</label>
+                <input type="text" name="addcash">
+                <input type="submit" value="Submit">
+                <input type='hidden' name='cash' value='{{cash}}'>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}

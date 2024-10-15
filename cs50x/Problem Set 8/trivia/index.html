@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr>
+                <h3 id="query">Today's year?</h3>
+                <button type="button" onclick="myfunction(this)">2021</button>
+                <button type="button" id="2022" onclick="myfunction(this)">2022</button>
+                <button type="button" onclick="correctFunction(this)" class="correct">2023</button>
+
+                <div id="result"></div>
+
+                <script>
+                    function myfunction(element){
+                        var originalColor = element.style.backgroundColor;
+
+                        element.style.backgroundColor = "red";
+
+                        var resultElement = document.getElementById("result");
+                        resultElement.innerHTML = "Incorrect";
+                        resultElement.style.color = "red";
+
+                        setTimeout(function(){
+                            element.style.backgroundColor = originalColor;
+                        }, 500);
+                    }
+
+                    function correctFunction(element){
+                        // Sačuvaj trenutnu boju da možeš vratiti kasnije
+                        var originalColor = element.style.backgroundColor;
+
+                        element.style.backgroundColor = "green";
+
+                        var resultElement = document.getElementById("result");
+                        resultElement.innerHTML = "Correct!";
+                        resultElement.style.color = "green";
+
+                        setTimeout(function(){
+                            element.style.backgroundColor = originalColor;
+                        }, 500);
+                    }
+                </script>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>New _ _ _ _ City?</h3>
+                <input id="txt" type="text">
+                <button type="button" onclick="myfunc()">Confirm</button>
+                <p id="output"></p>
+
+                <script>
+                    function myfunc() {
+                          inputText = document.getElementById("txt").value;
+                          inputTxt = document.getElementById("txt");
+                          output = document.getElementById("output");
+                          text ="";
+
+                        if (inputText === "York") {
+                            text = "Correct!";
+                            inputTxt.style.backgroundColor = "Green";
+                        } else {
+                            text = "Incorrect";
+                            inputTxt.style.backgroundColor = "Red";
+                        }
+
+                        output.textContent = text;
+                    }
+                </script>
+
+            </div>
+        </div>
+    </body>
+</html>
